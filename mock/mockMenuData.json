@@ -1,0 +1,20 @@
+[
+  {
+    "id": "bg-01",
+    "name": "JAX Burger",
+    "base_price": 110,
+    "category": "Regular Burgers",
+    "description": "Burger with JAX sauce, patty, bacon, cheese, and vegetables",
+    "option_groups": [
+      {
+        "name": "Meat Selection",
+        "type": "single",
+        "options": [
+          { "name": "Chicken", "price": 0 },
+          { "name": "Pork", "price": 10 },
+          { "name": "Beef", "price": 30 }
+        ]
+      }
+    ]
+  }
+]

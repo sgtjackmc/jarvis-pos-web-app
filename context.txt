@@ -1,0 +1,127 @@
+## 🧾 JAX Burger POS System Timeline (Jarvis POS)
+
+### 🧠 Concept Origin
+
+* **ต้นปี 2024**
+
+  * Jack เริ่มอยากทำระบบ POS แบบง่ายๆ สำหรับร้าน JAX Burger
+  * เลือกใช้เทคโนโลยีพื้นฐาน: `HTML`, `CSS`, `JavaScript`
+  * ตั้งเป้าให้เชื่อมกับ `Google Sheets API` แทนการใช้ Database
+
+---
+
+### 🚧 Initial Prototyping Phase (ก.พ. 2024 – มี.ค. 2024)
+
+* สร้าง mockup UI ด้วย CSS และ Flexbox
+* ทดลอง layout แบบ Sidebar + Order Panel
+* ยังเป็น HTML + JS ไฟล์เดียว ไม่ได้แยกโมดูล
+* เริ่มทดสอบ UIKit แต่ภายหลังยกเลิกเพื่อใช้ Custom CSS
+
+---
+
+### 🛠️ Modularization Phase (มี.ค. 2025)
+
+* เริ่มแยกไฟล์ JavaScript ออกเป็นโมดูลตามหน้าที่:
+
+  * `menuOptionLoader.js`
+  * `menuRenderer.js`
+  * `orderManager.js`
+  * `submitOrder.js`
+  * `uiManager.js`
+* ใช้ `type="module"` และ `export/import` เพื่อ maintainability
+* เริ่มเชื่อมกับ Google Sheets จริงผ่าน Google Apps Script
+* ตั้งค่าการส่งออเดอร์ด้วย `fetch()` และ `Content-Type: text/plain`
+* แก้ปัญหา CORS อย่างถูกต้อง
+* ระบบสามารถใช้งานจริงในร้านได้ครั้งแรกเมื่อ **23 มีนาคม 2025**
+
+---
+
+### 🎨 UI Upgrade & Project Structure Refactor (พ.ค. 2025)
+
+* สร้างโครงสร้างโปรเจกต์ใหม่แบบมืออาชีพ:
+
+  ```
+  /jarvis-pos-web-app
+  ├── index.html
+  ├── styles.css
+  ├── script.js
+  ├── modules/
+  ├── components/
+  ├── views/
+  ├── services/
+  ├── utils/
+  ├── mock/
+  ├── assets/
+  └── config.js
+  ```
+* เพิ่ม mock data, .env, config.js
+* เพิ่ม `views/MenuPage.js` และ `views/CheckoutPage.js`
+* เริ่มใช้ `components/Toast.js` เพื่อแสดงแจ้งเตือน
+
+---
+
+### 📦 Features Implemented
+
+* ✅ Menu Rendering (real-time from Google Sheets)
+* ✅ Order Panel + Subtotal/Tax Calculation
+* ✅ Add to Order + Deduplicate with Option Key
+* ✅ Submit Order → Append to Google Sheet (`Orders` sheet)
+* ✅ Toast Notification & Loading Indicator
+* ✅ Responsive UI for Tablet/Desktop
+* ✅ Order History View (`OrderHistoryPage.js`) ← in progress
+
+---
+
+## 💻 Local Development Environment (as of June 2025)
+
+### 🌐 Custom Domain Setup
+
+* ใช้ `http://jarvis-pos.test` เป็น dev URL
+* มีการ map hosts:
+
+  ```
+  127.0.0.1   jarvis-pos.test
+  ```
+
+### ⚙️ Apache VirtualHost
+
+* ใช้งานผ่าน Apache (httpd) ติดตั้งด้วย Homebrew
+* ไฟล์ config:
+
+  ```apache
+  <VirtualHost *:80>
+      DocumentRoot "/Users/jax2025/Sites/jarvis-pos-web-app"
+      ServerName jarvis-pos.test
+      <Directory "/Users/jax2025/Sites/jarvis-pos-web-app">
+          AllowOverride All
+          Require all granted
+      </Directory>
+  </VirtualHost>
+  ```
+
+### 🔁 การรัน Server
+
+* ใช้คำสั่ง:
+
+  ```bash
+  sudo apachectl restart
+  ```
+* หรือใช้:
+
+  ```bash
+  brew services restart httpd
+  ```
+
+### 🛠 ปัญหาที่เคยพบ
+
+* `brew services list` แสดงว่า `httpd` error เนื่องจาก port ชนหรือ config ผิด
+* แก้ไขโดยตรวจ syntax (`apachectl configtest`) และดู log ที่ `/usr/local/var/log/httpd/error_log`
+
+---
+
+## ✅ สถานะล่าสุด (ณ 3 มิ.ย. 2025)
+
+* ระบบ POS ใช้งานได้สมบูรณ์ในระดับ Local Dev
+* เชื่อม Google Sheets ได้จริงแบบ two-way
+* UI ดูดีและพร้อม scale ต่อยอด
+* ถัดไป: Receipt View, Print, Notify, Stock System
