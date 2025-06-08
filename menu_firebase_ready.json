@@ -1,0 +1,384 @@
+{
+  "menu": {
+    "bg-01": {
+      "id": "bg-01",
+      "name": "JAX Burger",
+      "base_price": 110,
+      "category": "Burgers",
+      "description": "Burger with JAX sauce, patty, bacon, cheese, and vegetables",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-02": {
+      "id": "bg-02",
+      "name": "Classic Burger",
+      "base_price": 90,
+      "category": "Burgers",
+      "description": "Classic burger with JAX sauce and fresh vegetables",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-03": {
+      "id": "bg-03",
+      "name": "Cheese Burger",
+      "base_price": 110,
+      "category": "Burgers",
+      "description": "Burger with extra cheddar cheese",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-04": {
+      "id": "bg-04",
+      "name": "Big JAX Burger",
+      "base_price": 140,
+      "category": "Burgers",
+      "description": "Double patty burger with bacon and extra cheese",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-05": {
+      "id": "bg-05",
+      "name": "Truffle Mayo Burger",
+      "base_price": 110,
+      "category": "Burgers",
+      "description": "Burger with truffle mayo, bacon, and shiitake mushroom",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-06": {
+      "id": "bg-06",
+      "name": "Mala Spicy Burger",
+      "base_price": 110,
+      "category": "Burgers",
+      "description": "Spicy mala burger with grilled shiitake mushroom",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-07": {
+      "id": "bg-07",
+      "name": "Hawaii Five-O Burger",
+      "base_price": 110,
+      "category": "Burgers",
+      "description": "Teriyaki sauce grilled burger with pineapple",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-08": {
+      "id": "bg-08",
+      "name": "Fish Burger",
+      "base_price": 75,
+      "category": "Burgers",
+      "description": "Fish patty burger with tartar sauce",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-09": {
+      "id": "bg-09",
+      "name": "Fried Chicken Burger",
+      "base_price": 90,
+      "category": "Burgers",
+      "description": "Crispy fried chicken burger with choice of sauce",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bg-10": {
+      "id": "bg-10",
+      "name": "Hot Dog",
+      "base_price": 130,
+      "category": "Burgers",
+      "description": "Classic hot dog with toppings and sauces",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "sl-01": {
+      "id": "sl-01",
+      "name": "Chicken Salad",
+      "base_price": 89,
+      "category": "Salads",
+      "description": "Grilled chicken breast salad with dressing",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "sl-02": {
+      "id": "sl-02",
+      "name": "Green Salad",
+      "base_price": 69,
+      "category": "Salads",
+      "description": "Fresh green salad with dressing",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "sl-03": {
+      "id": "sl-03",
+      "name": "Waldorf Salad",
+      "base_price": 89,
+      "category": "Salads",
+      "description": "Apple, walnut, and grape salad with mayo dressing",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "sl-04": {
+      "id": "sl-04",
+      "name": "Tomato Cucumber Salad",
+      "base_price": 69,
+      "category": "Salads",
+      "description": "Fresh tomato and cucumber salad",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "sl-05": {
+      "id": "sl-05",
+      "name": "Fruit Salad",
+      "base_price": 89,
+      "category": "Salads",
+      "description": "Assorted fresh fruit salad",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "st-01": {
+      "id": "st-01",
+      "name": "Picanha Steak",
+      "base_price": 290,
+      "category": "Steaks",
+      "description": "Rump cap steak with roasted vegetables",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "st-02": {
+      "id": "st-02",
+      "name": "Chicken Steak",
+      "base_price": 135,
+      "category": "Steaks",
+      "description": "Grilled chicken steak with tartar sauce",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "st-03": {
+      "id": "st-03",
+      "name": "Salmon Steak",
+      "base_price": 189,
+      "category": "Steaks",
+      "description": "Grilled salmon with salad and lemon",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "st-04": {
+      "id": "st-04",
+      "name": "Black Pepper Chicken Steak",
+      "base_price": 89,
+      "category": "Steaks",
+      "description": "Chicken steak with black pepper and tartar sauce",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "rb-01": {
+      "id": "rb-01",
+      "name": "Fried Chicken Rice Bowl",
+      "base_price": 55,
+      "category": "Rice Bowls",
+      "description": "Fried chicken with rice and sauce",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bf-01": {
+      "id": "bf-01",
+      "name": "Good Morning",
+      "base_price": 155,
+      "category": "Breakfast Plates",
+      "description": "Full breakfast with eggs, bacon, and sausage",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bf-02": {
+      "id": "bf-02",
+      "name": "Daybreak",
+      "base_price": 85,
+      "category": "Breakfast Plates",
+      "description": "Breakfast plate with eggs and bacon",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bf-03": {
+      "id": "bf-03",
+      "name": "Nightfall",
+      "base_price": 115,
+      "category": "Breakfast Plates",
+      "description": "Croissant breakfast plate",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bf-04": {
+      "id": "bf-04",
+      "name": "Waxing Crescent",
+      "base_price": 85,
+      "category": "Breakfast Plates",
+      "description": "Mushroom cheese bacon omelette",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "bf-05": {
+      "id": "bf-05",
+      "name": "Waning Crescent",
+      "base_price": 85,
+      "category": "Breakfast Plates",
+      "description": "Mushroom cheese omelette",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-01": {
+      "id": "mn-01",
+      "name": "French Fries",
+      "base_price": 50,
+      "category": "Munchies",
+      "description": "Classic French fries",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-02": {
+      "id": "mn-02",
+      "name": "BBQ French Fries",
+      "base_price": 50,
+      "category": "Munchies",
+      "description": "BBQ flavored French fries",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-03": {
+      "id": "mn-03",
+      "name": "Cheese French Fries",
+      "base_price": 50,
+      "category": "Munchies",
+      "description": "Cheesy flavored French fries",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-04": {
+      "id": "mn-04",
+      "name": "Chicken Nugget",
+      "base_price": 75,
+      "category": "Munchies",
+      "description": "Six pieces of chicken nuggets",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-05": {
+      "id": "mn-05",
+      "name": "Tater Tots",
+      "base_price": 75,
+      "category": "Munchies",
+      "description": "Small bite hashbrown",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-06": {
+      "id": "mn-06",
+      "name": "Onion Ring",
+      "base_price": 80,
+      "category": "Munchies",
+      "description": "Fried onion rings",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "mn-07": {
+      "id": "mn-07",
+      "name": "Chicken Tenderloin",
+      "base_price": 75,
+      "category": "Munchies",
+      "description": "Three pieces of chicken tenderloin",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "dk-01": {
+      "id": "dk-01",
+      "name": "Bottle of Water",
+      "base_price": 10,
+      "category": "Beverages",
+      "description": "600 ml bottled water",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "dk-02": {
+      "id": "dk-02",
+      "name": "Soda Water",
+      "base_price": 15,
+      "category": "Beverages",
+      "description": "Carbonated soda water",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "dk-03": {
+      "id": "dk-03",
+      "name": "Soda Can",
+      "base_price": 20,
+      "category": "Beverages",
+      "description": "Coke / Coke Zero / Sprite",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "dk-04": {
+      "id": "dk-04",
+      "name": "Fresh Lemonade",
+      "base_price": 40,
+      "category": "Beverages",
+      "description": "Fresh lemonade",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "dk-05": {
+      "id": "dk-05",
+      "name": "Black Coffee",
+      "base_price": 40,
+      "category": "Beverages",
+      "description": "Hot or iced black coffee",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    },
+    "dk-06": {
+      "id": "dk-06",
+      "name": "Milk Coffee",
+      "base_price": 50,
+      "category": "Beverages",
+      "description": "Hot or iced milk coffee",
+      "image_url": null,
+      "status": null,
+      "option_groups": []
+    }
+  }
+} 

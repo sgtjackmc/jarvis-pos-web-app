@@ -7,6 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Include the JavaScript file -->
+    <!-- Ensure the path to script.js is correct and it's a module -->
+    <script type="module" src="script.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <!-- Your config and API -->
+    <script src="config.js"></script>
+    <script src="services/firebaseApi.js"></script>
+    <!-- Your app scripts (order matters!) -->
+    <script src="modules/menuRenderer.js"></script>
+    <script src="modules/uiManager.js"></script>
+    <script src="views/MenuPage.js"></script>
+    <script src="views/OrderHistoryPage.js"></script>
+    <script src="views/MenuManagementPage.js"></script>
+    <script src="views/OptionGroupsManagementPage.js"></script>
+    <link rel="icon" href="data:,">
 </head>
 <body>
     <!-- Header/Nav Bar -->
@@ -79,152 +98,89 @@
 
     <!-- Main Content Area -->
     <div class="main-container">
-        <div class="content">
-            <!-- Category Tabs -->
-            <div class="category-tabs">
-                <!-- data-category attribute is added for easier JavaScript targeting -->
-                <div class="category-tab active" data-category="All Items">All Items</div>
-                <div class="category-tab" data-category="Breakfast">Breakfast</div>
-                <div class="category-tab" data-category="Burgers">Burgers</div>
-                <div class="category-tab" data-category="Sandwiches">Sandwiches</div>
-                <div class="category-tab" data-category="Sides">Sides</div>
-                <div class="category-tab" data-category="Drinks">Drinks</div>
-                <div class="category-tab" data-category="Desser45678
+        <div class="content" id="main-content">
+            <!-- Dynamic content will be injected here -->
+            <div id="auth-panel" style="display:none;justify-content:center;align-items:center;height:60vh;">
+                <div style="background:#fff;padding:32px 36px;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,0.10);text-align:center;">
+                    <h2>Sign in to JAX Burger POS</h2>
+                    <button id="google-signin-btn" style="margin-top:18px;padding:10px 28px;font-size:1.1em;border-radius:8px;border:none;background:#fff;box-shadow:0 1px 4px #ccc;cursor:pointer;display:flex;align-items:center;gap:10px;">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width:24px;height:24px;"> Sign in with Google
+                    </button>
+                </div>
+            </div>
+            <div id="settings-panel" style="display:none;padding:18px 18px 0 18px;">
+                <div class="settings-section">
+                    <div class="settings-section-title">Accounting Settings</div>
+                    <div id="tax-toggle-setting" style="display:flex;align-items:center;gap:10px;margin:10px 0 18px 0;">
+                        <label for="tax-toggle-switch" style="font-size:15px;cursor:pointer;">Enable Tax (7%)</label>
+                        <input type="checkbox" id="tax-toggle-switch" style="width:22px;height:22px;cursor:pointer;">
+                    </div>
+                </div>
+                <div class="settings-section">
+                    <div class="settings-section-title">Option Groups Settings</div>
+                    <div style="color:#888;font-size:14px;margin:8px 0 18px 0;">Manage option groups for menu items here in the future.</div>
+                </div>
+                <div class="settings-section">
+                    <div class="settings-section-title">Menu Item Category Settings</div>
+                    <div style="color:#888;font-size:14px;margin:8px 0 18px 0;">Manage menu categories here in the future.</div>
+                </div>
+            </div>
+            <div id="orders-section">
+                <div id="category-tabs"></div>
+                <div class="menu-grid"></div>
+            </div>
+        </div>
+        <div class="order-panel">
+            <div class="order-header">
+                <div class="order-title">Current Order</div>
+                <div class="order-subtitle"><span id="order-number">Order #1234</span> • <span id="order-type-label">Dine In</span></div>
+                <div class="order-type-selector" style="margin-top:8px;">
+                  <button type="button" class="order-type-btn active" data-type="Dine In">Dine-In</button>
+                  <button type="button" class="order-type-btn" data-type="Take Away">Take-Away</button>
+                  <button type="button" class="order-type-btn" data-type="Delivery">Delivery</button>
+                </div>
+            </div>
+            <div class="order-items">
+                <!-- Order items will be dynamically rendered here by JavaScript -->
             </div>
 
-            <div id="loading-indicator" class="hidden">
-                <div class="spinner"></div>
-                <p>Processing your order...</p>
-            </div>
+            <div class="order-summary">
+                <div class="summary-row">
+                    <div class="summary-label">Subtotal</div>
+                    <div class="summary-value">$0.00</div>
+                </div>
+                <div class="summary-row">
+                    <div class="summary-label">Tax (7%)</div>
+                    <div class="summary-value">$0.00</div>
+                </div>
+                <div class="summary-total">
+                    <div class="total-label">Total</div>
+                    <div class="total-value">$0.00</div>
+                </div>
 
-            <!-- Menu Grid -->
-            <div class="menu-grid">
-                <!-- Sample Menu items with data-category attribute -->
-                <!-- In a real application, these would be dynamically rendered -->
-                <div class="menu-item" data-category="Burgers">
-                    <div class="menu-item-image" style="background-image: url('https://placehold.co/300x200/E8AA42/FFFFFF?text=Jax+Burger');"></div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-name">JAX Burger</div>
-                            <div class="menu-item-price">$110</div>
-                        </div>
-                        <p class="menu-item-desc">Burger with JAX sauce, patty, bacon, cheese, and vegetables.</p>
-                        <!-- Add options and actions here -->
-                         <div class="menu-item-action">
-                            <button class="add-to-order">Add</button>
-                        </div>
+                <div class="payment-methods">
+                    <div class="payment-method active" data-method="Cash">
+                        <i class="fas fa-money-bill"></i>
+                        <div>Cash</div>
+                    </div>
+                    <div class="payment-method" data-method="QR">
+                        <i class="fas fa-qrcode"></i>
+                        <div>QR</div>
+                    </div>
+                    <div class="payment-method" data-method="Later">
+                        <i class="fas fa-clock"></i>
+                        <div>Later</div>
                     </div>
                 </div>
-                <div class="menu-item" data-category="Burgers">
-                    <div class="menu-item-image" style="background-image: url('https://placehold.co/300x200/F08A5D/FFFFFF?text=Cheese+Burger');"></div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-name">Cheese Burger</div>
-                            <div class="menu-item-price">$110</div>
-                        </div>
-                        <p class="menu-item-desc">Burger with extra cheddar cheese.</p>
-                         <div class="menu-item-action">
-                            <button class="add-to-order">Add</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-item" data-category="Sides">
-                    <div class="menu-item-image" style="background-image: url('https://placehold.co/300x200/B83B5E/FFFFFF?text=Fries');"></div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-name">French Fries</div>
-                            <div class="menu-item-price">$50</div>
-                        </div>
-                        <p class="menu-item-desc">Crispy golden french fries.</p>
-                         <div class="menu-item-action">
-                            <button class="add-to-order">Add</button>
-                        </div>
-                    </div>
-                </div>
-                 <div class="menu-item" data-category="Drinks">
-                    <div class="menu-item-image" style="background-image: url('https://placehold.co/300x200/6A2C70/FFFFFF?text=Coke');"></div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-name">Cola</div>
-                            <div class="menu-item-price">$30</div>
-                        </div>
-                        <p class="menu-item-desc">Refreshing cola drink.</p>
-                         <div class="menu-item-action">
-                            <button class="add-to-order">Add</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-item" data-category="Breakfast">
-                    <div class="menu-item-image" style="background-image: url('https://placehold.co/300x200/2EB086/FFFFFF?text=Pancakes');"></div>
-                    <div class="menu-item-content">
-                        <div class="menu-item-header">
-                            <div class="menu-item-name">Pancakes</div>
-                            <div class="menu-item-price">$80</div>
-                        </div>
-                        <p class="menu-item-desc">Fluffy pancakes with syrup.</p>
-                         <div class="menu-item-action">
-                            <button class="add-to-order">Add</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="order-history-list">
-                <!-- Order items will render here -->
+                <button class="place-order-btn">Place Order</button>
             </div>
+        </div>
+
+        <!-- Mobile Toggle Button for Order Panel -->
+        <div class="mobile-order-toggle" style="display: none;">
+            <i class="fas fa-shopping-cart"></i>
         </div>
     </div>
-
-    <!-- Order Panel -->
-    <div class="order-panel">
-        <div class="order-header">
-            <div class="order-title">Current Order</div>
-            <div class="order-subtitle">Order #1234 • Dine In</div>
-        </div>
-        <div class="order-items">
-            <!-- Order items will be dynamically rendered here by JavaScript -->
-        </div>
-
-        <div class="order-summary">
-            <div class="summary-row">
-                <div class="summary-label">Subtotal</div>
-                <div class="summary-value">$0.00</div>
-            </div>
-            <div class="summary-row">
-                <div class="summary-label">Tax (7%)</div>
-                <div class="summary-value">$0.00</div>
-            </div>
-            <div class="summary-total">
-                <div class="total-label">Total</div>
-                <div class="total-value">$0.00</div>
-            </div>
-
-            <div class="payment-methods">
-                <div class="payment-method active">
-                    <i class="fas fa-credit-card"></i>
-                    <div>Card</div>
-                </div>
-                <div class="payment-method">
-                    <i class="fas fa-money-bill"></i>
-                    <div>Cash</div>
-                </div>
-                <div class="payment-method">
-                    <i class="fas fa-clock"></i>
-                    <div>PayLater</div>
-                </div>
-            </div>
-
-            <button class="place-order-btn">Place Order</button>
-        </div>
-    </div>
-
-    <!-- Mobile Toggle Button for Order Panel -->
-    <div class="mobile-order-toggle" style="display: none;">
-        <i class="fas fa-shopping-cart"></i>
-    </div>
-
-    <!-- Include the JavaScript file -->
-    <!-- Ensure the path to script.js is correct and it's a module -->
-    <script type="module" src="script.js"></script>
 </body>
 </html>

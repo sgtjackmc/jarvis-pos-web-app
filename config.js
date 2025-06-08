@@ -1,7 +1,13 @@
 // config.js
-export const CONFIG = {
-  sheetId: '1NcIdaR6b0r9G2_fXmA2DCh7KTYCV0iErlFa9z_Uggiw',
-  appsScriptUrl: 'https://script.google.com/macros/s/AKfycbxIDjOuargjlkMLf_lpfFi4jPW58OoLh2KuS7z5Ve1SoQMiVWciIYqH6SQXytu-2iQ/exec',
-  apiKey: 'AIzaSyBQIlvCTVdruH90juumWCwgyIjzXBS5uvM',
-  env: 'development'
+window.firebaseConfig = {
+  apiKey: "AIzaSyA2_d_t4uh7SeQnNce5SElVIV2sSIwpBXo",
+  authDomain: "jarvis-pos.firebaseapp.com",
+  databaseURL: "https://jarvis-pos-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "jarvis-pos",
+  storageBucket: "jarvis-pos.firebasestorage.app",
+  messagingSenderId: "271975250806",
+  appId: "1:271975250806:web:46a42199c6c0ee4843d857"
 };
+
+firebase.initializeApp(window.firebaseConfig);
+const db = firebase.database();

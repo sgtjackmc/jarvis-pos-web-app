@@ -1,4 +1,4 @@
-export function updateOrderDisplay(currentOrder) {
+window.updateOrderDisplay = function(currentOrder) {
     const orderItemsContainer = document.querySelector('.order-items');
     orderItemsContainer.innerHTML = '';
     let subtotal = 0;
@@ -16,35 +16,47 @@ export function updateOrderDisplay(currentOrder) {
 
     // สร้าง HTML แสดง options แบบแยกกลุ่ม
     const optionsHTML = Object.entries(grouped).map(([group, options]) => {
-    return `<div class="order-item-add-ons">${group}: ${options.join(', ')}</div>`;
+    return `<div class=\"order-item-add-ons\">${group}: ${options.join(', ')}</div>`;
     }).join('');
 
 
     const orderItemHTML = `
-    <div class="order-item" data-id="${item.id}">
-      <div class="order-item-details">
-        <div class="order-item-header">
-          <div class="order-item-name">${item.name}</div>
-          <div class="order-item-total">$${itemTotal.toFixed(2)}</div>
-        </div>
-        ${optionsHTML}
-      </div>
-    </div>
-  `;
+    <div class=\"order-item\" data-id=\"${item.id}\" data-key=\"${item.key}\">\n      <div class=\"order-item-details\">\n        <div class=\"order-item-header\">\n          <div class=\"order-item-name\">${item.name}</div>\n          <div class=\"order-item-total\">${window.APP_SETTINGS.currencySymbol}${itemTotal.toFixed(2)}</div>\n        </div>\n        ${optionsHTML}\n      </div>\n    </div>\n  `;
   
   
       orderItemsContainer.insertAdjacentHTML('beforeend', orderItemHTML);
     });
   
-    const tax = subtotal * 0.07;
-    const total = subtotal + tax;
+    // Make order items clickable for editing
+    orderItemsContainer.querySelectorAll('.order-item').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.onclick = function() {
+        const key = el.getAttribute('data-key');
+        if (key) window.editOrderItem(key);
+      };
+    });
   
-    document.querySelector('.summary-row:nth-child(1) .summary-value').textContent = `$${subtotal.toFixed(2)}`;
-    document.querySelector('.summary-row:nth-child(2) .summary-value').textContent = `$${tax.toFixed(2)}`;
-    document.querySelector('.total-value').textContent = `$${total.toFixed(2)}`;
+    const taxRow = document.querySelector('.summary-row:nth-child(2)');
+    let tax = 0;
+    let total = subtotal;
+    // Use Firebase-synced settings
+    if (window.APP_SETTINGS.taxEnabled === true) {
+      tax = subtotal * 0.07;
+      total = subtotal + tax;
+      if (taxRow) {
+        taxRow.style.display = '';
+        document.querySelector('.summary-row:nth-child(2) .summary-value').textContent = `${window.APP_SETTINGS.currencySymbol}${tax.toFixed(2)}`;
+      }
+    } else {
+      if (taxRow) taxRow.style.display = 'none';
+      tax = 0;
+      total = subtotal;
+    }
+    document.querySelector('.summary-row:nth-child(1) .summary-value').textContent = `${window.APP_SETTINGS.currencySymbol}${subtotal.toFixed(2)}`;
+    document.querySelector('.total-value').textContent = `${window.APP_SETTINGS.currencySymbol}${total.toFixed(2)}`;
   }
   
-  export function addMenuItemEventListeners() {
+  window.addMenuItemEventListeners = function() {
     document.querySelectorAll('.menu-item').forEach(menuItem => {
       const minusBtn = menuItem.querySelector('.minus-btn');
       const plusBtn = menuItem.querySelector('.plus-btn');
@@ -122,3 +134,7 @@ export function updateOrderDisplay(currentOrder) {
     });
   });
 }
+
+window.generateOrderNumber = function() {
+  return Math.floor(1000 + Math.random() * 9000).toString();
+};

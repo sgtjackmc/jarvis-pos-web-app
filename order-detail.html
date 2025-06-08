@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - JAX Burger POS</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .order-detail-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .order-detail-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .order-meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .order-items {
+            margin: 20px 0;
+        }
+
+        .items-list {
+            margin-top: 15px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .item-name {
+            font-weight: bold;
+        }
+
+        .item-options {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .order-total {
+            text-align: right;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .print-receipt-btn, .back-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .print-receipt-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .back-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .error {
+            color: #d32f2f;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="order-detail-container">
+        <!-- Content will be dynamically populated by JavaScript -->
+    </div>
+
+    <script type="module">
+        import { initOrderDetailPage } from './views/OrderDetailPage.js';
+        import { initMenuManagementPage } from './views/MenuManagementPage.js';
+        
+        // Initialize the order detail page when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', initOrderDetailPage);
+
+        // ... inside your SPA navigation logic:
+        if (text === 'Menu') {
+            clearMainContent();
+            initMenuManagementPage();
+        }
+    </script>
+</body>
+</html> 

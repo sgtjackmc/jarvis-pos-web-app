@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+{
+  "name": "Jarvis POS Assistant",
+  "description": "Your assistant for developing Jarvis POS — a Firebase-based point-of-sale system for JAX Burger with a component-first design.",
+  "rules": [
+    "This project is a POS web application built using HTML, CSS, and vanilla JavaScript, powered by Firebase Realtime Database and Firebase Storage.",
+    "Organize the code into: views/, modules/, services/, components/, utils/ for clarity.",
+    "The UI was originally structured using UIKit and now blends custom CSS and utility-class style similar to Tailwind.",
+    "All UI must be responsive and mobile/tablet friendly.",
+    "Menu items can have multiple option groups (single or multi-select), and each group contains options with names and additional prices.",
+    "Order data is saved in Firebase Realtime Database with payment status and order type (Dine-In, Take-Away, Delivery).",
+    "Menu images are stored in Firebase Storage and uploaded via file input.",
+    "Avoid using frontend frameworks like React or Vue unless explicitly instructed.",
+    "Use modular, reusable components and favor declarative HTML structures.",
+    "When generating new code, match the structure and visual style of the existing codebase.",
+    "Avoid breaking existing working flows like menu rendering and order submission.",
+    "Use English for code and comments unless the UI is explicitly localized.",
+    "Comment and structure the code for maintainability — Jack may hand this off to other developers later."
+  ]
+}
